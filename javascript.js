@@ -38,5 +38,37 @@ container.addEventListener('mouseover', (e) => {
     }
 });
 
+let buttons = document.querySelector('.buttons');
+buttons.addEventListener('click', (e) => {
+    let element = e.target;
+    const selectedClass = element.classList[0];
+
+    switch(selectedClass){
+        case 'resize':
+            let input = prompt("How much to resize?");
+
+            if (input <= 0 || isNaN(input)){
+                alert("Invalid Input");
+                break;
+            }
+
+            size = input;
+            deleteBoxes();
+            createBoxes();
+
+            break;
+        case 'reset':
+            deleteBoxes();
+            createBoxes();
+            break;
+        default:
+            // alert(selectedClass);
+            break;
+
+    }
+});
+
+// creates default grid
 createBoxes();
+
 
